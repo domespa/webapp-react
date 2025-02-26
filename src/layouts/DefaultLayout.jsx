@@ -6,7 +6,11 @@ export default function DefaultLayout() {
   return (
     <>
       <Header />
-      <Outlet />
+
+      <div className="w-full px-20">
+        <Outlet />
+      </div>
+
       <Footer />
     </>
   );
