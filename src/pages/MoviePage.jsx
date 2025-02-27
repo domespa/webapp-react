@@ -1,6 +1,7 @@
 import axios from "../api/axios";
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import Container from "../components/ui/Container";
 
 export default function MoviePage() {
   const [movie, setMovie] = useState({});
@@ -21,5 +22,17 @@ export default function MoviePage() {
   };
 
   useEffect(fetchMovie, [id, navigate]);
-  return <h1>{movie.title}</h1>;
+  return (
+    <Container>
+      <div className="grid grid-cols-12 gap-4">
+        <div className="col-span-6">
+          <img src={movie.image} alt={movie.title} />
+        </div>
+        <div className="col-span-6">
+          <h3>{movie.title}</h3>
+          <p>{movie.abstract}</p>
+        </div>
+      </div>
+    </Container>
+  );
 }
