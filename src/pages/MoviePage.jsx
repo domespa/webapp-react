@@ -2,6 +2,7 @@ import axios from "../api/axios";
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import Container from "../components/ui/Container";
+import FormReview from "../components/ui/FormReview";
 
 export default function MoviePage() {
   const [movie, setMovie] = useState({});
@@ -35,13 +36,20 @@ export default function MoviePage() {
       </div>
       <div className="mt-4 bg-gray-200 p-4 rounded-xl">
         <h1>Recensioni</h1>
-        {movie.reviews.map((review) => (
-          <div key={review.id}>
-            <h1>{review.name}</h1>
-            <p>{review.vote}</p>
-            <p>{review.text}</p>
-          </div>
-        ))}
+        {movie.reviews && movie.reviews.length > 0 ? (
+          movie.reviews.map((review) => (
+            <div key={review.id}>
+              <h1>{review.name}</h1>
+              <p>{review.vote}</p>
+              <p>{review.text}</p>
+            </div>
+          ))
+        ) : (
+          <p>Non ci sono recensioni per questo film.</p>
+        )}
+      </div>
+      <div className="mt-4 bg-gray-200 p-4 rounded-xl">
+        <FormReview onFormSubmitted={fetchMovie} />
       </div>
     </Container>
   );
