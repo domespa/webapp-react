@@ -1,10 +1,13 @@
 import Logo from "./Logo";
+import Navbar from "./Navbar";
 export default function Header() {
   return (
     <header>
-      <div className="flex justify-between items-center h-20 m-4 px-4 rounded-xl bg-gray-200 shadow-sm">
-        <Logo />
-        <h3>Navbar</h3>
+      <div className="flex justify-between items-center h-25 m-4 px-4 rounded-xl bg-gray-200 shadow-sm">
+        <div className="w-25 h-auto">
+          <Logo />
+        </div>
+        <Navbar />
         <div>
           <input
             type="text"

@@ -7,7 +7,7 @@ export default function DefaultLayout() {
     <>
       <Header />
 
-      <div className="w-full px-20">
+      <div className="w-full px-20 py-10">
         <Outlet />
       </div>
 
