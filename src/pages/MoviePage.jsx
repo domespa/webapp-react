@@ -24,14 +24,24 @@ export default function MoviePage() {
   useEffect(fetchMovie, [id, navigate]);
   return (
     <Container>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-6">
+      <div className="flex grid grid-cols-12 gap-4">
+        <div className="col-span-12 md:col-span-3">
           <img src={movie.image} alt={movie.title} />
         </div>
-        <div className="col-span-6">
+        <div className="col-span-12 md:col-span-8 bg-gray-200 p-4 rounded-xl">
           <h3>{movie.title}</h3>
           <p>{movie.abstract}</p>
         </div>
+      </div>
+      <div className="mt-4 bg-gray-200 p-4 rounded-xl">
+        <h1>Recensioni</h1>
+        {movie.reviews.map((review) => (
+          <div key={review.id}>
+            <h1>{review.name}</h1>
+            <p>{review.vote}</p>
+            <p>{review.text}</p>
+          </div>
+        ))}
       </div>
     </Container>
   );
