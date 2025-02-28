@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import Container from "../components/ui/Container";
 import FormReview from "../components/ui/FormReview";
+import Heading from "../components/ui/Heading";
+import Text from "../components/ui/Text";
 
 export default function MoviePage() {
   const [movie, setMovie] = useState({});
@@ -30,22 +32,22 @@ export default function MoviePage() {
           <img src={movie.image} alt={movie.title} />
         </div>
         <div className="col-span-12 md:col-span-8 bg-gray-200 p-4 rounded-xl">
-          <h3>{movie.title}</h3>
-          <p>{movie.abstract}</p>
+          <Heading level={2}>{movie.title}</Heading>
+          <Text size="lg">{movie.abstract}</Text>
         </div>
       </div>
       <div className="mt-4 bg-gray-200 p-4 rounded-xl">
-        <h1>Recensioni</h1>
+        <Heading level={3}>Recensioni</Heading>
         {movie.reviews && movie.reviews.length > 0 ? (
           movie.reviews.map((review) => (
             <div key={review.id}>
-              <h1>{review.name}</h1>
-              <p>{review.vote}</p>
-              <p>{review.text}</p>
+              <Heading level={5}>{review.name}</Heading>
+              <Text size="md">{review.vote}</Text>
+              <Text size="md">{review.text}</Text>
             </div>
           ))
         ) : (
-          <p>Non ci sono recensioni per questo film.</p>
+          <Text size="md">Non ci sono recensioni per questo film.</Text>
         )}
       </div>
       <div className="mt-4 bg-gray-200 p-4 rounded-xl">
