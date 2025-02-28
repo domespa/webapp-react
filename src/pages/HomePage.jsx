@@ -10,6 +10,7 @@ export default function HomePage() {
 
   const fetchMovies = () => {
     axios.get("/movies").then((res) => {
+      console.log(res.data);
       setMovies(res.data);
     });
   };
@@ -25,6 +26,7 @@ export default function HomePage() {
               <Card
                 title={movie.title}
                 image={movie.image}
+                vote={movie.avg_vote}
                 director={movie.director}
                 genre={movie.genre}
                 abstract={movie.abstract}

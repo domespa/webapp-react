@@ -5,6 +5,7 @@ import Container from "../components/ui/Container";
 import FormReview from "../components/ui/FormReview";
 import Heading from "../components/ui/Heading";
 import Text from "../components/ui/Text";
+import RateFunction from "../components/ui/RateFunction";
 
 export default function MoviePage() {
   const [movie, setMovie] = useState({});
@@ -25,14 +26,23 @@ export default function MoviePage() {
   };
 
   useEffect(fetchMovie, [id, navigate]);
+
+  useEffect(() => {
+    console.log(movie.avg_vote);
+  }, [movie]);
   return (
     <Container>
-      <div className="flex grid grid-cols-12 gap-4">
+      <div className="flex grid grid-cols-12 bg-gray-200 rounded-xl">
         <div className="col-span-12 md:col-span-3">
-          <img src={movie.image} alt={movie.title} />
+          <img
+            className="h-full w-full object-cover p-5"
+            src={movie.image}
+            alt={movie.title}
+          />
         </div>
-        <div className="col-span-12 md:col-span-8 bg-gray-200 p-4 rounded-xl">
+        <div className="col-span-12 md:col-span-8 p-4 rounded-xl">
           <Heading level={2}>{movie.title}</Heading>
+          <RateFunction voteaverage={movie.avg_vote} />
           <Text size="lg">{movie.abstract}</Text>
         </div>
       </div>
@@ -42,7 +52,7 @@ export default function MoviePage() {
           movie.reviews.map((review) => (
             <div key={review.id}>
               <Heading level={5}>{review.name}</Heading>
-              <Text size="md">{review.vote}</Text>
+              <RateFunction voteaverage={review.vote} />
               <Text size="md">{review.text}</Text>
             </div>
           ))
