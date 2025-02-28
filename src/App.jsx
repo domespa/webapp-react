@@ -13,7 +13,7 @@ export default function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index path="/" element={<HomePage />} />
-          <Route path="/movies/:id" element={<MoviePage />} />
+          <Route path="movies/:id" element={<MoviePage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

@@ -24,6 +24,7 @@ export default function HomePage() {
           {movies.map((movie) => (
             <Column key={movie.id}>
               <Card
+                id={movie.id}
                 title={movie.title}
                 image={movie.image}
                 vote={movie.avg_vote}

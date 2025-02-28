@@ -27,9 +27,6 @@ export default function MoviePage() {
 
   useEffect(fetchMovie, [id, navigate]);
 
-  useEffect(() => {
-    console.log(movie.avg_vote);
-  }, [movie]);
   return (
     <Container>
       <div className="flex grid grid-cols-12 bg-gray-200 rounded-xl">
